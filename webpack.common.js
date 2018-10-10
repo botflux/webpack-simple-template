@@ -3,9 +3,11 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const MediaQueryPlugin = require('media-query-plugin')
 
 module.exports = {
-    entry: './assets/js/app.js',
+    entry: {
+        app: './assets/js/app.js'
+    },
     output: {
-        filename: 'bundle.js',
+        filename: this.mode === 'development' ? '[name].js' : '[name].[chunkhash].js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: path.resolve(__dirname, 'dist') + '/'
     },
@@ -37,12 +39,11 @@ module.exports = {
     },
     plugins: [
         new MiniCSSExtractPlugin({
-            filename: '[name].css'
+            filename: this.mode === 'development' ? '[name].css' : '[name].[contenthash].css',
+            chunkFilename: '[id].[chunkhash].css'
         }),
         new MediaQueryPlugin({
-            include: [
-                'app'
-            ],
+            include: true,
             queries: {
                 'screen and (min-width: 768px)': 'desktop'
             }
