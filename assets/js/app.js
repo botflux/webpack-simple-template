@@ -1,8 +1,3 @@
-import '../css/app.css'
-if (window.innerWidth >= 768) {
-    import('../css/app-desktop.css')
-}
-
 /**
  * Exemple avec Lazy loading
  */

@@ -1,15 +1,9 @@
-const path = require('path')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const MediaQueryPlugin = require('media-query-plugin')
 
 module.exports = {
     entry: {
-        app: './assets/js/app.js'
-    },
-    output: {
-        filename: this.mode === 'development' ? '[name].js' : '[name].[chunkhash].js',
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: path.resolve(__dirname, 'dist') + '/'
+        app: ['./assets/js/app.js', './assets/css/app.css']
     },
     module: {
         rules: [
@@ -38,10 +32,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new MiniCSSExtractPlugin({
-            filename: this.mode === 'development' ? '[name].css' : '[name].[contenthash].css',
-            chunkFilename: '[id].[chunkhash].css'
-        }),
         new MediaQueryPlugin({
             include: true,
             queries: {
