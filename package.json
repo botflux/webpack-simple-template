@@ -18,6 +18,7 @@
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
     "media-query-plugin": "^1.2.0",
     "mini-css-extract-plugin": "^0.4.4",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -27,5 +28,8 @@
     "webpack-cli": "^3.1.2",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "url-loader": "^1.1.2"
   }
 }

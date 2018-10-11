@@ -1,5 +1,6 @@
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const MediaQueryPlugin = require('media-query-plugin')
+const path = require('path')
 
 module.exports = {
     entry: {
@@ -27,6 +28,24 @@ module.exports = {
                         }
                     },
                     MediaQueryPlugin.loader
+                ]
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)$?/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            name: '[name].[hash:7].[ext]'
+                        }
+                    }
                 ]
             }
         ]
