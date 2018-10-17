@@ -8,7 +8,9 @@ module.exports = merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        hot: true
+        hot: true,
+        hotOnly: true,
+        contentBase: path.join(__dirname, 'dist')
     },
     output: {
         filename: '[name].js',

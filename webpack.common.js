@@ -1,5 +1,7 @@
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const MediaQueryPlugin = require('media-query-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWepbackHardDiskPlugin = require('html-webpack-harddisk-plugin')
 const path = require('path')
 
 module.exports = {
@@ -47,6 +49,12 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    'html-loader'
+                ]
             }
         ]
     },
@@ -56,6 +64,12 @@ module.exports = {
             queries: {
                 'screen and (min-width: 768px)': 'desktop'
             }
-        })
+        }),
+        new HtmlWebpackPlugin({
+            filename: path.resolve(__dirname, 'dist/index.html'),
+            template: 'assets/index.html',
+            alwaysWriteToDisk: true
+        }),
+        new HtmlWepbackHardDiskPlugin()
     ]
 }
